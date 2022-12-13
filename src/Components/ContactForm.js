@@ -28,7 +28,7 @@ export const ContactForm = (props) => {
         <input type="phone" id="phone_contact" name="phone" onChange={handlePhoneChange} value={props.phone} />
         </label>
         <input type="submit"  disabled={props.isDuplicate} 
-          value={props.isDuplicate ? 'Please enter another name' : 'Submit'}  />
+          value={props.isDuplicate ? 'Por favor ingrese otro nombre' : 'Enviar'}  />
       </form>
     );
   };

@@ -22,7 +22,7 @@ export const AppointmentsPage = (props) => {
   return (
     <div>
       <section>
-        <h2>Add Appointment</h2>
+        <h2>Agregar Turno</h2>
         <AppointmentForm
         title={title}
         setTitle={setTitle}
@@ -38,7 +38,7 @@ export const AppointmentsPage = (props) => {
       </section>
       <hr />
       <section>
-        <h2>Appointments</h2>
+        <h2>Turnos</h2>
         <TileList list={props.appointments}></TileList>
       </section>
     </div>
