@@ -39,7 +39,7 @@ export const AppointmentsPage = (props) => {
       <hr />
       <section>
         <h2>Turnos</h2>
-        <TileList list={props.appointments}></TileList>
+        <TileList deleteObj={props.deleteObj} list={props.appointments}></TileList>
       </section>
     </div>
   );

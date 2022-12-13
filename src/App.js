@@ -27,21 +27,10 @@ function App() {
       {
         name: name,
         phone: phone,
-        email: email
+        email: email,
+        id: new Date().valueOf()
       },
       ...contacts
-    ])
-  }
-
-  function addAppointment(title, contact, date, time) {
-    setAppointments((appointment) => [
-      {
-        title: title,
-        contact: contact,
-        date: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`,
-        time: `${time.getHours()}:${time.getMinutes()}`
-      },
-      ...appointment
     ])
   }
 
@@ -49,9 +38,30 @@ function App() {
     localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
+  function handleDeleteContact(id){
+    setContacts(contacts.filter(item => id !== item.id))
+  }
+  
+  function addAppointment(title, contact, date, time) {
+    setAppointments((appointment) => [
+      {
+        title: title,
+        contact: contact,
+        date: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`,
+        time: `${time.getHours()}:${time.getMinutes()}`,
+        id: new Date().valueOf()
+      },
+      ...appointment
+    ])
+  }
+
   useEffect(() => {
     localStorage.setItem('appointments', JSON.stringify(appointments));
   }, [appointments]);
+
+  function handleDeleteAppointment(id){
+    setAppointments(contacts.filter(item => id !== item.id))
+  }
 
   return (
     <div className="App">
@@ -60,11 +70,11 @@ function App() {
           <NavLink
             to={ROUTES.CONTACTS}
           >
-            Contacts
+            Contactos
           </NavLink>
           <NavLink
             to={ROUTES.APPOINTMENTS}>
-            Appointments
+            Turnos
           </NavLink>
         </nav>
         <main>
@@ -79,6 +89,7 @@ function App() {
                 appointments={appointments}
                 addAppointment={addAppointment}
                 contacts={contacts.map(item => item.name)}
+                deleteObj={handleDeleteAppointment}
               />}
             />
             <Route
@@ -86,6 +97,7 @@ function App() {
               element={<ContactsPage
                 contacts={contacts}
                 addContact={addContact}
+                deleteObj={handleDeleteContact}
               />}
             />
             <Route
