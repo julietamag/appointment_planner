@@ -10,7 +10,7 @@ function handlePickContact(e){
     defaultValue=''
     placeholder="Por favor seleccione una opcion"
     >
-        {props.contacts.map(item => <option onChange={props.handleContactChange} value={item} key={item}>{item}</option>)}
+        {props.contacts.map(item => <option value={item} key={item}>{item}</option>)}
     </select>
 )
 }

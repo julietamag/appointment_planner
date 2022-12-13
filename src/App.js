@@ -42,11 +42,11 @@ function App() {
     setContacts(contacts.filter(item => id !== item.id))
   }
   
-  function addAppointment(title, contact, date, time) {
+  function addAppointment(title, name, date, time) {
     setAppointments((appointment) => [
       {
         title: title,
-        contact: contact,
+        name: name,
         date: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`,
         time: `${time.getHours()}:${time.getMinutes()}`,
         id: new Date().valueOf()
@@ -60,7 +60,7 @@ function App() {
   }, [appointments]);
 
   function handleDeleteAppointment(id){
-    setAppointments(contacts.filter(item => id !== item.id))
+    setAppointments(appointments.filter(item => id !== item.id))
   }
 
   return (

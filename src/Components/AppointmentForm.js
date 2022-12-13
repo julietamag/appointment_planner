@@ -6,20 +6,12 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export const AppointmentForm = (props) => {
 
-
-  // const getTodayString = () => {
-  //   const [month, day, year] = new Date()
-  //     .toLocaleDateString("en-US")
-  //     .split("/");
-  //   return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-  // };
-
   function handleTitleChange(e) {
     props.setTitle(e.target.value)
   }
 
   function handleContactChange(contact) {
-    props.setContact(contact)
+    props.setName(contact)
   }
 
   function handleDateChange(e) {
@@ -47,7 +39,7 @@ export const AppointmentForm = (props) => {
           <input type="text" id="title" name="title" placeholder="Seleccione el tipo de turno" onChange={handleTitleChange} value={props.title} required />
         </label>
         <label htmlFor="contact">Contacto:
-          <ContactPicker contacts={props.contacts} contact={props.contact} handleContactChange={handleContactChange} setContact={props.setContact} />
+          <ContactPicker contacts={props.contacts} name={props.name} handleContactChange={handleContactChange} setName={props.setName} />
         </label>
         <label htmlFor="date">Fecha:
           <DatePicker

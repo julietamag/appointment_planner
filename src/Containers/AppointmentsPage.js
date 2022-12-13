@@ -6,15 +6,15 @@ import { TileList } from "../Components/TileList";
 
 export const AppointmentsPage = (props) => {
   const [title, setTitle] = useState('');
-  const [contact, setContact] = useState('');
+  const [name, setName] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
 
 
   const handleSubmit = () => {
-    props.addAppointment(title, contact, date, time);
+    props.addAppointment(title, name, date, time);
     setTitle('');
-    setContact('');
+    setName('');
     setDate('');
     setTime('');
   };
@@ -26,8 +26,8 @@ export const AppointmentsPage = (props) => {
         <AppointmentForm
         title={title}
         setTitle={setTitle}
-        contact={contact}
-        setContact={setContact}
+        name={name}
+        setName={setName}
         date={date}
         setDate={setDate}
         time={time}
