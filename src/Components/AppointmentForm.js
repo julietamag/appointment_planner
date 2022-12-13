@@ -19,7 +19,6 @@ export const AppointmentForm = (props) => {
   }
 
   function handleContactChange(contact) {
-    console.log(contact)
     props.setContact(contact)
   }
 

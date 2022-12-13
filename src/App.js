@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, NavLink } from 'react-router-dom';
 import './App.css';
 import { AppointmentsPage } from './Containers/AppointmentsPage';
@@ -8,8 +8,14 @@ import { ErrorPage } from './Containers/ErrorPage'
 
 
 function App() {
-  const [contacts, setContacts] = useState([{name: 'pepe',phone: '123456789', email: 'pepe@gmail.com'}]);
-  const [appointments, setAppointments] = useState([]);
+  const [contacts, setContacts] = useState(() => {
+    const localData = localStorage.getItem('contacts');
+    return localData ? JSON.parse(localData) : []
+  });
+  const [appointments, setAppointments] = useState(() => {
+    const localData = localStorage.getItem('appointments');
+    return localData ? JSON.parse(localData) : []
+  });
 
   const ROUTES = {
     CONTACTS: "/contacts",
@@ -38,6 +44,14 @@ function App() {
       ...appointment
     ])
   }
+
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
+  useEffect(() => {
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+  }, [appointments]);
 
   return (
     <div className="App">
